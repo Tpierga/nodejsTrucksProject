@@ -1,6 +1,7 @@
-let offers = require('./async-js')
-let R = require('ramda');
-
+const offers = require('./async-js');
+const R = require('ramda');
+const {prepareData, trainNN} = require('./nn');
+const data = require('./createdataset');
 //this is our listener. the functions should be called here.
 //start with parsing file
 
@@ -22,6 +23,8 @@ offers.launchEmitter();
 
 
 **/
+
+R.pipeWith(R.andThen, [prepareData, trainNN])(data);
 
 
 

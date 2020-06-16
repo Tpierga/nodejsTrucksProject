@@ -1,10 +1,9 @@
-R = require('ramda')
+const R = require('ramda')
 
 const truck_speed = 0.025  //miles per seconds
 const capacity = 50
 
-//TODO create file
-//average = average_ratio_of_course, numberCases = readfile(mean(ratio))
+arrayDataset = []
 
 /**
  *
@@ -73,10 +72,10 @@ for (i = 0; i<listTrucks.length; i++)
 }
 // end of first offer
 
-console.log(oneOffer)
+console.log(oneOffer);
 
-oneOfferPrev = oneOffer
-
+oneOfferPrev = oneOffer;
+arrayDataset.push(oneOffer);
 let t = 1;
 let averageValue = oneOfferPrev['valuePerMile']/1;
 let somme = oneOfferPrev['valuePerMile'];
@@ -154,8 +153,10 @@ while (t<50)
         benef += oneOffer['valueOfCourse']; // TODO should be added only when truck returns
     }
     console.log("total benef : " + benef.toString()+"\n\n");
-    //TODO: add each time to csv file which will be used for training
+    arrayDataset.push(oneOffer);
 }
+
+module.exports = {arrayDataset}
 
 //addToFile(oneOffer, csv);
 
