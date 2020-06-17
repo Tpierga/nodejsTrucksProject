@@ -44,7 +44,6 @@ for(i=0; i<nb_cargos-1; i++)
 oneOffer['valueOfCourse']+= oneOffer['boxes']%capacity * oneOffer['pricePerBox'] // remainder
 oneOffer['valuePerMile'] = oneOffer['valueOfCourse'] / oneOffer['travel']
 
-
 let listTrucks = []
 oneOffer['distanceTruck1'] = 0;
 listTrucks.push(oneOffer['distanceTruck1'])
@@ -78,13 +77,12 @@ console.log(oneOffer);
 oneOfferPrev = oneOffer;
 arrayDataset.push(oneOffer);
 let t = 1;
-let averageValue = oneOfferPrev['valuePerMile']/1;
 let somme = oneOfferPrev['valuePerMile'];
 let benef = oneOfferPrev['valueOfCourse'];
 
-while (t<50)
+while (t<10000)
 {
-    t+=1;
+
     const oneOffer= {
         pricePerBox: Math.ceil(Math.random() * 10),
         boxes: Math.floor(Math.random() * 100),
@@ -117,9 +115,20 @@ while (t<50)
     listTrucks.push(oneOffer['distanceTruck5'])
 
     console.log('value per Mile : ', oneOffer['valuePerMile']);
-    somme += oneOffer['valuePerMile']
-    averageValue = somme/t;
-    console.log("average value per mile : " + averageValue.toString());
+    if (oneOffer['valuePerMile']!==Infinity)
+    {
+        t+=1;
+        somme= somme + oneOffer['valuePerMile'];
+        averageValue = somme/t;
+        console.log("average value per mile : " + averageValue.toString());
+    }
+    else
+    {
+        console.log("value was Infinity");
+    }
+
+
+
 
     const whoIsParked = c => c==0 ? 1:0;
     let nb_trucks_ready = R.reduce((a,b) => a + b, 0, R.map(whoIsParked, listTrucks));
@@ -159,11 +168,9 @@ while (t<50)
 (async () => {
     const csv = new ObjectsToCsv(arrayDataset);
     await csv.toDisk('./offers.csv');
-
-    console.log(await csv.toString());
 })();
 
-//addToFile(oneOffer, csv);
+
 
 //automatically decide for each line if you send truck or not, by actuallising the mean of gain in file
 
