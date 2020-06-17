@@ -21,10 +21,18 @@ send_truck_async()
 
 offers.launchEmitter();
 
-
 **/
 
 R.pipeWith(R.andThen, [prepareData, trainNN])(data);
+
+
+
+
+
+
+
+
+
 
 
 

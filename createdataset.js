@@ -1,4 +1,5 @@
 const R = require('ramda')
+const ObjectsToCsv = require('objects-to-csv');
 
 const truck_speed = 0.025  //miles per seconds
 const capacity = 50
@@ -115,7 +116,6 @@ while (t<50)
     oneOfferPrev['distanceTruck5'] > distance_covered ? oneOffer['distanceTruck5'] = Math.floor(oneOfferPrev['distanceTruck5'] - distance_covered): oneOffer['distanceTruck5']=0;
     listTrucks.push(oneOffer['distanceTruck5'])
 
-
     console.log('value per Mile : ', oneOffer['valuePerMile']);
     somme += oneOffer['valuePerMile']
     averageValue = somme/t;
@@ -156,11 +156,36 @@ while (t<50)
     arrayDataset.push(oneOffer);
 }
 
-module.exports = {arrayDataset}
+(async () => {
+    const csv = new ObjectsToCsv(arrayDataset);
+    await csv.toDisk('./offers.csv');
+
+    console.log(await csv.toString());
+})();
 
 //addToFile(oneOffer, csv);
 
 //automatically decide for each line if you send truck or not, by actuallising the mean of gain in file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
