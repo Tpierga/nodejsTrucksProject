@@ -80,7 +80,7 @@ let t = 1;
 let somme = oneOfferPrev['valuePerMile'];
 let benef = oneOfferPrev['valueOfCourse'];
 
-while (t<10000)
+while (t<500)
 {
 
     const oneOffer= {
@@ -99,7 +99,7 @@ while (t<10000)
     oneOffer['valueOfCourse']+= oneOffer['boxes']%capacity * oneOffer['pricePerBox'] // remainder
     oneOffer['valuePerMile'] = oneOffer['valueOfCourse'] / oneOffer['travel']
 
-    let distance_covered= oneOffer["timeSinceLast"] * truck_speed ;
+    let distance_covered = oneOffer["timeSinceLast"] * truck_speed ;
     console.log('distance covered : ' + distance_covered.toString());
 
     let listTrucks = []
