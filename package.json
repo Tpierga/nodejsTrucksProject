@@ -1,13 +1,12 @@
 {
   "name": "tpnode",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "LeKer29 <theo.kergutuil@esme.fr>",
   "license": "ISC",
   "dependencies": {
     "brain.js": "^2.0.0-beta.1",
@@ -16,5 +15,15 @@
     "objects-to-csv": "^1.3.6",
     "ramda": "^0.27.0",
     "scale-number-range": "^1.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tpierga/nodejsTrucksProject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tpierga/nodejsTrucksProject/issues"
+  },
+  "homepage": "https://github.com/Tpierga/nodejsTrucksProject#readme",
+  "devDependencies": {},
+  "description": ""
 }
